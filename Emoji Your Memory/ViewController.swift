@@ -77,17 +77,15 @@ class ViewController: UIViewController, CardViewDelegate {
         super.viewDidLoad()
         
         playMystic()
-//        
-//        let bestScoreArchive = UserDefaults.standard
-//        
-//        if(bestScoreArchive.value(forKey: "testr1") == nil) {
-//            testr1 = bestScoreArchive.value(forKey: "testr1") as! Int
-//        }
-//     
+        
+        let bestScoreArchive = UserDefaults.standard
+        if(bestScoreArchive.value(forKey: "bestScore") != nil) {
+            bestScore = bestScoreArchive.value(forKey: "bestScore") as! Int
+        }
         
         self.view.backgroundColor = UIColor.blue
         
-         scoreLabel.text = "Score: 0"
+         scoreLabel.text = String(bestScore) //"Score: 0 "
       
         
         game.ganGame()
@@ -147,6 +145,10 @@ class ViewController: UIViewController, CardViewDelegate {
                                 return $1
                             }
                         }
+                        
+                        let bestScoreArchive = UserDefaults.standard
+                        bestScoreArchive.setValue(bestScore, forKey: "bestScore")
+                        bestScoreArchive.synchronize()
                         
                         let alert = UIAlertController(title: "Game Over", message: "GameScore: \(self.game.score)n/ Best Score: \(bestScore)", preferredStyle: .alert)
                         
