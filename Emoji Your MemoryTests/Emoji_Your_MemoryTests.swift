@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Emoji_Your_Memory
+@testable import Memoji
 
 class Emoji_Your_MemoryTests: XCTestCase {
     

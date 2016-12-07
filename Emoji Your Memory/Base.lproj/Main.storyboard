@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Gdk-Yv-xYQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Memoji-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Emoji_Your_Memory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Memoji" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,15 +22,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score: 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJb-ys-YJ3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJb-ys-YJ3">
                                 <rect key="frame" x="290" y="638" width="75" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="yQu-Kt-ewx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gM-cw-OOZ">
+                                <rect key="frame" x="24" y="638" width="258" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ev5-T3-lKR"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="JJb-ys-YJ3" firstAttribute="baseline" secondItem="3gM-cw-OOZ" secondAttribute="baseline" id="KAd-oY-LbM"/>
+                            <constraint firstItem="3gM-cw-OOZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="8" id="QSA-aa-rIF"/>
+                            <constraint firstItem="JJb-ys-YJ3" firstAttribute="leading" secondItem="3gM-cw-OOZ" secondAttribute="trailing" constant="8" id="XD3-Jd-h9r"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JJb-ys-YJ3" secondAttribute="trailing" constant="-6" id="e7v-T0-5Fb"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3gM-cw-OOZ" secondAttribute="bottom" constant="8" id="g1E-lW-xVk"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Ngv-QT-Mmq" appends="YES" id="W9P-UV-DWh"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Memoji" id="SGL-dL-MCe">
                         <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="Fvq-6z-WTI">
@@ -42,17 +69,23 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bestScoreLAbel" destination="3gM-cw-OOZ" id="BfK-RZ-bYO"/>
                         <outlet property="scoreLabel" destination="JJb-ys-YJ3" id="Zb9-Ea-0Sn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="Ngv-QT-Mmq">
+                    <connections>
+                        <segue destination="rO3-WB-Qhu" kind="show" id="EE4-Ix-jin"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1590" y="205"/>
+            <point key="canvasLocation" x="1589.5999999999999" y="204.64767616191907"/>
         </scene>
         <!--ScoreTV-->
         <scene sceneID="kUF-8W-UXT">
             <objects>
-                <viewController id="rO3-WB-Qhu" customClass="ScoreTV" customModule="Emoji_Your_Memory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rO3-WB-Qhu" customClass="ScoreTV" customModule="Memoji" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3K7-bS-ndc"/>
                         <viewControllerLayoutGuide type="bottom" id="vGf-jP-WXy"/>
@@ -80,7 +113,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lBs-vs-3ut">
-                                                    <rect key="frame" x="15" y="25" width="44" height="14.5"/>
+                                                    <rect key="frame" x="15" y="25.5" width="44" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -104,6 +137,9 @@
                             <constraint firstItem="eKj-yB-wcY" firstAttribute="leading" secondItem="1hm-Q0-lJ6" secondAttribute="leading" id="pOe-CN-wGC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="TV" destination="eKj-yB-wcY" id="tC4-AT-V4L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DzL-7w-0DA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -126,4 +162,7 @@
             <point key="canvasLocation" x="910" y="205"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="EE4-Ix-jin"/>
+    </inferredMetricsTieBreakers>
 </document>

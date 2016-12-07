@@ -17,7 +17,9 @@ class ViewController: UIViewController, CardViewDelegate {
     private let rows = 4
     private let cols = 4
     private let game = Game(rows: 4, cols: 4)
-    private var gameCount = 0
+    
+   private let bestScoreForAlert = savedScores.returnBestScore()
+    
     fileprivate var avSoundPlayer1 : AVAudioPlayer?
     fileprivate let cheering = Bundle.main.url(forResource: "1_person_cheering-Jett_Rifkin-1851518140", withExtension: "wav")!
     fileprivate var avSoundPlayer2 : AVAudioPlayer?
@@ -49,6 +51,7 @@ class ViewController: UIViewController, CardViewDelegate {
 
     
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var bestScoreLAbel: UILabel!
     
     @IBAction func newGAmeHit(_ sender: UIBarButtonItem) {
         newGame()
@@ -57,9 +60,8 @@ class ViewController: UIViewController, CardViewDelegate {
             }
     
     private func newGame(){
-        gameCount += 1
-        gameArray.append(gameCount)
         playMystic()
+        
         scoreLabel.text = "Score: 0"
         game.ganGame()
         
@@ -77,17 +79,13 @@ class ViewController: UIViewController, CardViewDelegate {
         super.viewDidLoad()
         
         playMystic()
-        
-        let bestScoreArchive = UserDefaults.standard
-        if(bestScoreArchive.value(forKey: "bestScore") != nil) {
-            bestScore = bestScoreArchive.value(forKey: "bestScore") as! Int
-        }
-        
+     
         self.view.backgroundColor = UIColor.blue
         
-         scoreLabel.text = String(bestScore) //"Score: 0 "
+       // let bestScorForLabel = savedScores.returnBestScore()
+        bestScoreLAbel.text = "Best Score: \(bestScoreForAlert)"
+        scoreLabel.text = "Score: 0"
       
-        
         game.ganGame()
         for r in 0..<rows {
             for c in 0..<cols {
@@ -103,8 +101,8 @@ class ViewController: UIViewController, CardViewDelegate {
         }
     }
     
-    //Mark: - CardViewDelegate
     
+    //Mark: - CardViewDelegate
     func getCardString(index: Int) -> (String, () -> ()) {
         view.isUserInteractionEnabled = false
         let (value,second) = game.flipCars(index: index)
@@ -120,9 +118,7 @@ class ViewController: UIViewController, CardViewDelegate {
     }
 
     
-    
     //CheckResult of Pick
-    
     func checkResult(){
         let (slor1,slot2) = self.game.getSlot()
         
@@ -138,6 +134,7 @@ class ViewController: UIViewController, CardViewDelegate {
                     if gameOver {
                         self.playFake()
                         scores.append(self.game.score)
+                        
                         bestScore = scores.reduce(scores[0]) {
                             if $0 < $1 {
                                 return $0
@@ -146,11 +143,17 @@ class ViewController: UIViewController, CardViewDelegate {
                             }
                         }
                         
-                        let bestScoreArchive = UserDefaults.standard
-                        bestScoreArchive.setValue(bestScore, forKey: "bestScore")
-                        bestScoreArchive.synchronize()
+                        //save array and besgt score in memory
+                        let defoults = UserDefaults.standard
+                        defoults.set(scores, forKey: "score")
+                        defoults.set(bestScore, forKey: "bestScore")
+                        defoults.synchronize()
+
                         
-                        let alert = UIAlertController(title: "Game Over", message: "GameScore: \(self.game.score)n/ Best Score: \(bestScore)", preferredStyle: .alert)
+                        
+                        self.bestScoreLAbel.text = "Best Score: \(self.bestScoreForAlert)"
+
+                        let alert = UIAlertController(title: "Game Over", message: "GameScore: \(self.game.score)n/ Best Score: \(self.bestScoreForAlert)", preferredStyle: .alert)
                         
                         let okHit = UIAlertAction(title: "OK", style: .default){(result : UIAlertAction) -> Void in
                             
@@ -178,10 +181,8 @@ class ViewController: UIViewController, CardViewDelegate {
         }
         scoreLabel.text = "Score: \(self.game.score)"
     }
-    
   
 }
-
 
 
 

@@ -22,6 +22,7 @@
 		240DD2031DF3957B00F68A28 /* Fake Applause-SoundBible.com-1541144825.wav in Resources */ = {isa = PBXBuildFile; fileRef = 240DD2021DF3957B00F68A28 /* Fake Applause-SoundBible.com-1541144825.wav */; };
 		240DD2051DF398FB00F68A28 /* Mystic_Chanting_3-Marianne_Gagnon-1163676956.wav in Resources */ = {isa = PBXBuildFile; fileRef = 240DD2041DF398FB00F68A28 /* Mystic_Chanting_3-Marianne_Gagnon-1163676956.wav */; };
 		240DD2071DF39F7C00F68A28 /* ScoreTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240DD2061DF39F7C00F68A28 /* ScoreTV.swift */; };
+		243BE27F1DF7C88B0069FC67 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243BE27E1DF7C88B0069FC67 /* Functions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		240DD2021DF3957B00F68A28 /* Fake Applause-SoundBible.com-1541144825.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Fake Applause-SoundBible.com-1541144825.wav"; sourceTree = "<group>"; };
 		240DD2041DF398FB00F68A28 /* Mystic_Chanting_3-Marianne_Gagnon-1163676956.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Mystic_Chanting_3-Marianne_Gagnon-1163676956.wav"; sourceTree = "<group>"; };
 		240DD2061DF39F7C00F68A28 /* ScoreTV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTV.swift; sourceTree = "<group>"; };
+		243BE27E1DF7C88B0069FC67 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				240DD1FA1DF0FF9600F68A28 /* CardView.swift */,
 				240DD1CA1DEFCD1600F68A28 /* ViewController.swift */,
 				240DD2061DF39F7C00F68A28 /* ScoreTV.swift */,
+				243BE27E1DF7C88B0069FC67 /* Functions.swift */,
 				240DD1CC1DEFCD1600F68A28 /* Main.storyboard */,
 				240DD1CF1DEFCD1600F68A28 /* Assets.xcassets */,
 				240DD1D11DEFCD1600F68A28 /* LaunchScreen.storyboard */,
@@ -296,6 +299,7 @@
 				240DD2071DF39F7C00F68A28 /* ScoreTV.swift in Sources */,
 				240DD1CB1DEFCD1600F68A28 /* ViewController.swift in Sources */,
 				240DD1F71DF0E6A100F68A28 /* Card.swift in Sources */,
+				243BE27F1DF7C88B0069FC67 /* Functions.swift in Sources */,
 				240DD1C91DEFCD1600F68A28 /* AppDelegate.swift in Sources */,
 				240DD1F91DF0F10100F68A28 /* Game.swift in Sources */,
 				240DD1FB1DF0FF9600F68A28 /* CardView.swift in Sources */,
